@@ -31,5 +31,8 @@
 </script>
 
 <style scoped>
-
+    div#outer-container{
+        grid-column: 6 / 7;
+        grid-row: 5;
+    }
 </style>

@@ -15,7 +15,14 @@
 </script>
 
 <style scoped>
-    #nextLang:hover {
+    div#nextLang{
+        grid-column: 12 / 12;
+        grid-row: 7;
+        place-self: baseline end;
+    }
+    div#nextLang:hover {
         color: cornflowerblue;
+        cursor: default;
+        user-select: none;
     }
 </style>

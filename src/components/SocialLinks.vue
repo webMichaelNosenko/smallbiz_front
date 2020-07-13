@@ -13,7 +13,11 @@
 </script>
 
 <style scoped>
-    #SocialLinks {
-
+    div#SocialLinks {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1 / 1;
+        grid-row: 3 / 5;
+        place-self: center;
     }
 </style>

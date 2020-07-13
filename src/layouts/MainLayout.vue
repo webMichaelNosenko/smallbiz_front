@@ -1,14 +1,8 @@
 <template>
     <div id="MainLayout">
-        <header>
-            <slot name = "header"></slot>
-        </header>
-        <main>
-            <slot name = "main"></slot>
-        </main>
-        <footer>
-            <slot name = "footer"></slot>
-        </footer>
+        <slot name = "header"></slot>
+        <slot name = "main"></slot>
+        <slot name = "footer"></slot>
     </div>
 </template>
 
@@ -18,10 +12,10 @@
     }
 </script>
 
-<style scoped>
+<style>
     div#MainLayout {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        grid-auto-rows: auto;
+        grid-template-rows: repeat(7, 1fr);
     }
 </style>
