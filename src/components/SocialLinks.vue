@@ -20,4 +20,7 @@
         grid-row: 3 / 5;
         place-self: center;
     }
+    a {
+        margin-bottom: 15px;
+    }
 </style>

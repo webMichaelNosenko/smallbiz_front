@@ -14,9 +14,14 @@
 
 <style scoped>
     div#NavBar{
-        grid-column: 5 / 8;
+        display: inline-block;
+        grid-column: 5 / 9;
         grid-row: 1;
-        place-self: center;
+        align-self: center;
+    }
+    a {
+        text-decoration: none;
+        color: black;
     }
     a.account{
         margin-right: 10%;

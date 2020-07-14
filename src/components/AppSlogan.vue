@@ -10,7 +10,10 @@
 
 <style scoped>
     div#AppSlogan{
-        grid-column: 6 / 7;
-        grid-row: 3;
+        grid-column: 4 / 10;
+        grid-row: 3 / 5;
+        font-size: calc(60px + 1vw);
+        align-self: center;
+        text-align: center;
     }
 </style>
