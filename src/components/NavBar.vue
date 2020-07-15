@@ -12,16 +12,26 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     div#NavBar{
-        display: inline-block;
+        display: inline-flex;
         grid-column: 5 / 9;
         grid-row: 1;
         align-self: center;
+        justify-content: center;
     }
     a {
         text-decoration: none;
         color: black;
+        font-size: $linkSize;
+    }
+    @media only screen and (max-width: 1033px){
+        div#NavBar{
+            grid-column: 3 / 9;
+        }
+        a {
+            font-size: $mobileLinkSize;
+        }
     }
     a.account{
         margin-right: 10%;

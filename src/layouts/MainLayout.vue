@@ -12,10 +12,12 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+
     div#MainLayout {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(7, 1fr);
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-rows: repeat(7, 14.3%);
+        height: 100vh;
     }
 </style>

@@ -30,9 +30,33 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     div#outer-container{
-        grid-column: 6 / 7;
-        grid-row: 5;
+        grid-column: 4 / 10;
+        grid-row: 6 / 7;
+        display: flex;
+    }
+    div#plain-text{
+        width: max-content;
+        font-size: $pickerSize;
+        flex-grow: 4;
+        text-align: center;
+
+    }
+    input#city-picker{
+        height: min-content;
+        background-color: #C4C4C4;
+        border-style: none;
+        font-size: $pickerSize;
+        width: 36%;
+    }
+    @media only screen and (max-width: 1033px){
+        div#outer-container{
+            grid-column: 4 / 10;
+            grid-row: 3 / 4;
+        }
+        div#plain-text, input#city-picker{
+            font-size: $mobilePickerSize;
+        }
     }
 </style>

@@ -14,11 +14,12 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     div#nextLang{
         grid-column: 12 / 12;
         grid-row: 7;
         place-self: baseline end;
+        font-size: $linkSize;
     }
     div#nextLang:hover {
         color: cornflowerblue;

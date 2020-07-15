@@ -1,8 +1,26 @@
 <template>
     <div id = "SocialLinks">
-        <a href="https://vk.com/sh_tsquad" class="vk"><img src="../../public/vkLogo.png" alt="VKontakte"></a>
-        <a href="#" class="inst"><img src="../../public/instLogo.png" alt="Instagram"></a>
-        <a href="#" class="fb"><img src="../../public/fbLogo.png" alt="Facebook"></a>
+        <a href="https://vk.com/sh_tsquad" class="vk">
+            <img
+                srcset="../../public/vkLogo.png 43w, ../../public/vkLogoMobile.png 24w"
+                sizes="(max-width: 1033px) 24px, 43px"
+                alt="VKontakte"
+            >
+        </a>
+        <a href="#" class="inst">
+            <img
+                srcset="../../public/instLogo.png 43w, ../../public/instLogoMobile.png 24w"
+                sizes="(max-width: 1033px) 24px, 43px"
+                alt="Instagram"
+            >
+        </a>
+        <a href="#" class="fb">
+            <img
+                srcset="../../public/fbLogo.png 43w, ../../public/fbLogoMobile.png 24w"
+                sizes="(max-width: 1033px) 24px, 43px"
+                alt="Facebook"
+            >
+        </a>
     </div>
 </template>
 
@@ -12,7 +30,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     div#SocialLinks {
         display: flex;
         flex-direction: column;
@@ -21,6 +39,24 @@
         place-self: center;
     }
     a {
-        margin-bottom: 15px;
+         margin-bottom: 15px;
+     }
+    @media only screen and (max-width: 1033px) {
+        div#SocialLinks {
+            display: flex;
+            flex-direction: row;
+            grid-column: 9 / 13;
+            grid-row: 1;
+            place-self: center;
+        }
+        a {
+            max-width: 100%;
+            max-height: 100%;
+            margin-bottom: 0;
+        }
+        a.vk, a.inst{
+            margin-right: 10px;
+        }
     }
+
 </style>
