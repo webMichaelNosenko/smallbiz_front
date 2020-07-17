@@ -1,10 +1,10 @@
 <template>
     <div id="outer-container">
-        <div id="plain-text">Вы живете в...</div>
-        <label for="city-picker"></label>
-        <input list = "cities" id = "city-picker" name = "city-picker">
-        <datalist id = "cities">
-            <option v-for="city in cities" :key="city.id"> {{city.cityName}} </option>
+        <div id="plain-text">Вы хотите...</div>
+        <label for="field-picker"></label>
+        <input list = "fields" id = "field-picker" name = "field-picker">
+        <datalist id = "fields">
+            <option v-for="field in fields" :key="field.id"> {{field.fieldName}} </option>
         </datalist>
         <button type="submit" v-on:click="confirmPressed">My name jef</button>
     </div>
@@ -12,27 +12,26 @@
 
 <script>
     export default {
-        name: "CityPicker",
+        name: "FieldPicker",
         data: function () {
             return {
-                city: '',
-                cities: [
+                field: '',
+                fields: [
                     {
                         id: 1,
-                        cityName: "Волгоград"
+                        fieldName: 'все и сразу!'
                     },
                     {
                         id: 2,
-                        cityName: "Москва"
+                        fieldName: 'прическу'
                     }
                 ]
             }
         },
         methods: {
             confirmPressed: function () {
-                this.$emit('confirmPressed', 'FieldPicker');
-                console.log(`emitted event 'confirmPressed' from ${this.$options.name} to change picker to FieldPicker`);
-                //might want to implement an Event Bus at this point
+                this.$emit('confirmPressed', this.name);
+                console.log(this.name);
             }
         }
     }
@@ -41,7 +40,7 @@
 <style scoped lang="scss">
     div#outer-container{
         grid-column: 4 / 10;
-        grid-row: 5 / 7;
+        grid-row: 6 / 7;
         display: flex;
     }
     div#plain-text{
@@ -51,7 +50,7 @@
         text-align: center;
 
     }
-    input#city-picker{
+    input#field-picker{
         height: min-content;
         background-color: #C4C4C4;
         border-style: none;
@@ -63,7 +62,7 @@
             grid-column: 4 / 10;
             grid-row: 3 / 4;
         }
-        div#plain-text, input#city-picker{
+        div#plain-text, input#field-picker{
             font-size: $mobilePickerSize;
         }
     }

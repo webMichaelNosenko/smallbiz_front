@@ -2,6 +2,7 @@
     <div id="MainLayout">
         <slot name = "header"></slot>
         <slot name = "main"></slot>
+        <slot name = "picker"></slot>
         <slot name = "footer"></slot>
     </div>
 </template>
