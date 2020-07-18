@@ -2,7 +2,7 @@
     <div id="outer-container">
         <div id="plain-text">Вы живете в...</div>
         <label for="city-picker"></label>
-        <input list = "cities" id = "city-picker" name = "city-picker">
+        <input v-model="currCity" list = "cities" id = "city-picker" name = "city-picker">
         <datalist id = "cities">
             <option v-for="city in cities" :key="city.id"> {{city.cityName}} </option>
         </datalist>
@@ -15,6 +15,7 @@
         name: "CityPicker",
         data: function () {
             return {
+                currCity: '',
                 city: '',
                 cities: [
                     {

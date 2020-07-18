@@ -2,7 +2,7 @@
     <div id="outer-container">
         <div id="plain-text">Вы хотите...</div>
         <label for="field-picker"></label>
-        <input list = "fields" id = "field-picker" name = "field-picker">
+        <input v-model="currField" list = "fields" id = "field-picker" name = "field-picker">
         <datalist id = "fields">
             <option v-for="field in fields" :key="field.id"> {{field.fieldName}} </option>
         </datalist>
@@ -15,6 +15,7 @@
         name: "FieldPicker",
         data: function () {
             return {
+                currField: '',
                 field: '',
                 fields: [
                     {
@@ -30,8 +31,9 @@
         },
         methods: {
             confirmPressed: function () {
-                this.$emit('confirmPressed', this.name);
-                console.log(this.name);
+                this.$emit('confirmPressed', 'CityPicker');
+                console.log(`emitted event 'confirmPressed' from ${this.$options.name} to change picker to FieldPicker`);
+                //might want to implement an Event Bus at this point
             }
         }
     }

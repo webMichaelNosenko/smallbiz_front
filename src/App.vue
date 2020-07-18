@@ -1,20 +1,12 @@
 <template>
     <div id="app">
-        <MainLayout>
-            <template v-slot:header>
-                <NavBar></NavBar>
-            </template>
-            <template v-slot:main>
-                <AppSlogan></AppSlogan>
-                <SocialLinks></SocialLinks>
-            </template>
-            <template v-slot:picker>
-                <component v-bind:is="currPicker" v-on:confirmPressed="onConfirmPressed"></component>
-            </template>
-            <template v-slot:footer>
-                <AppFooter></AppFooter>
-            </template>
-        </MainLayout>
+        <NavBar></NavBar>
+        <AppSlogan></AppSlogan>
+        <SocialLinks></SocialLinks>
+        <keep-alive :include="['CityPicker', 'FieldPicker']">
+            <component v-bind:is="currPicker" v-on:confirmPressed="onConfirmPressed"/>
+        </keep-alive>
+        <AppFooter></AppFooter>
     </div>
 </template>
 
@@ -23,10 +15,15 @@
     * {
         font-family: 'Merriweather', serif;
     }
+    div#app {
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-rows: repeat(7, 14.3%);
+        height: 100vh;
+    }
 </style>
 
 <script>
-    import MainLayout from "@/layouts/MainLayout";
     import AppSlogan from "@/components/AppSlogan";
     import NavBar from "@/components/NavBar";
     import SocialLinks from "@/components/SocialLinks";
@@ -34,7 +31,7 @@
     import AppFooter from "@/components/AppFooter";
     import FieldPicker from "@/components/FieldPicker";
     export default {
-        components: {MainLayout, AppSlogan, NavBar, SocialLinks, CityPicker, FieldPicker, AppFooter},
+        components: {AppSlogan, NavBar, SocialLinks, CityPicker, FieldPicker, AppFooter},
         data: function () {
             return {
                 currPicker: 'CityPicker'
