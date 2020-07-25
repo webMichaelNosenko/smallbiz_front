@@ -2,11 +2,15 @@
     <div id="outer-container">
         <div id="plain-text">Вы живете в...</div>
         <label for="city-picker"></label>
-        <input v-model="currCity" list = "cities" id = "city-picker" name = "city-picker">
+        <input v-model="currCity" list="cities" id="city-picker" name="city-picker">
         <datalist id = "cities">
             <option v-for="city in cities" :key="city.id"> {{city.cityName}} </option>
         </datalist>
-        <button type="submit" v-on:click="confirmPressed">My name jef</button>
+        <img id="confirm"
+             srcset="../../public/confirmButton.jpg 84w, ../../public/confirmButtonMobile.jpg 50w"
+             v-on:click="confirmPressed"
+             sizes="(max-width: 1033px) 50px, 84px"
+             alt="Confirm">
     </div>
 </template>
 
@@ -41,31 +45,67 @@
 
 <style scoped lang="scss">
     div#outer-container{
-        grid-column: 4 / 10;
-        grid-row: 5 / 7;
-        display: flex;
+        display: contents;
+        z-index: 0;
     }
     div#plain-text{
-        width: max-content;
         font-size: $pickerSize;
-        flex-grow: 4;
         text-align: center;
-
+        grid-column: 4 / 7;
+        grid-row: 5 / 6;
     }
     input#city-picker{
+        grid-column: 7 / 10;
+        grid-row: 5 / 6;
         height: min-content;
         background-color: #C4C4C4;
         border-style: none;
         font-size: $pickerSize;
-        width: 36%;
+    }
+    img#confirm{
+        grid-column: 6 / 8;
+        grid-row: 6 / 7;
+        justify-self: center;
     }
     @media only screen and (max-width: 1033px){
         div#outer-container{
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
             grid-column: 4 / 10;
-            grid-row: 3 / 4;
+            grid-row: 3 / 5;
+        }
+        div#plain-text{
+            justify-self: center;
+        }
+        input#city-picker{
+            justify-self: center;
+            margin-bottom: 10%;
+            margin-top: 7%;
+        }
+        img#confirm{
+            justify-self: center;
+            align-self: center;
+            width: min-content;
         }
         div#plain-text, input#city-picker{
             font-size: $mobilePickerSize;
+        }
+    }
+    @media only screen and (max-width: 1033px) and (orientation: landscape) {
+        div#plain-text, input#city-picker {
+            font-size: $mobilePickerSize - 1vw;
+        }
+        div#outer-container{
+            grid-row: 4 / 6;
+        }
+        input#city-picker{
+            justify-self: center;
+            margin-bottom: 7%;
+            margin-top: 7%;
+        }
+        div#plain-text{
+            margin-top: 7%;
         }
     }
 </style>

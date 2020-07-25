@@ -3,8 +3,11 @@
         <NavBar></NavBar>
         <AppSlogan></AppSlogan>
         <SocialLinks></SocialLinks>
-        <keep-alive :include="['CityPicker', 'FieldPicker']">
-            <component v-bind:is="currPicker" v-on:confirmPressed="onConfirmPressed"/>
+        <keep-alive>
+            <CityPicker v-if="currPicker === 'CityPicker'" v-on:confirmPressed="onConfirmPressed"></CityPicker>
+        </keep-alive>
+        <keep-alive>
+            <FieldPicker v-if="currPicker === 'FieldPicker'" v-on:confirmPressed="onConfirmPressed"></FieldPicker>
         </keep-alive>
         <AppFooter></AppFooter>
     </div>
@@ -12,13 +15,16 @@
 
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+    body{
+        margin: 0;
+    }
     * {
         font-family: 'Merriweather', serif;
     }
     div#app {
         display: grid;
-        grid-template-columns: repeat(12, 8.33%);
-        grid-template-rows: repeat(7, 14.3%);
+        grid-template-columns: repeat(12, calc(100% / 12));
+        grid-template-rows: repeat(7, calc(100% / 7));
         height: 100vh;
     }
 </style>
@@ -42,8 +48,8 @@
                 console.log(`Event 'confirmPressed' caught: `);
                 try {
                     if (nextPicker === undefined) throw 'undefinedNextPicker';
-                    this.currPicker = nextPicker;
                     console.log(`   picker changed from ${this.currPicker} to ${nextPicker}`);
+                    this.currPicker = nextPicker;
                 }
                 catch(err) {
                     console.log('   Error: trying to change to undefined picker (picker left unchanged)');

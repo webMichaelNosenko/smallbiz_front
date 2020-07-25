@@ -48,6 +48,8 @@
             grid-column: 9 / 13;
             grid-row: 1;
             place-self: center;
+            width: 100%;
+            justify-content: center;
         }
         a {
             max-width: 100%;
