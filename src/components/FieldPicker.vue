@@ -7,7 +7,7 @@
             <option v-for="field in fields" :key="field.id"> {{field.fieldName}} </option>
         </datalist>
         <img id="confirm"
-             srcset="../../public/confirmButton.jpg 84w, ../../public/confirmButtonMobile.jpg 50w"
+             srcset="../../public/confirmButton.jpg 84w ../../public/confirmButtonMobile.jpg 50w"
              v-on:click="confirmPressed"
              sizes="(max-width: 1033px) 50px, 84px"
              alt="Confirm">

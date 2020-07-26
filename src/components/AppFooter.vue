@@ -1,5 +1,5 @@
 <template>
-    <div id = "nextLang" v-on:click = "isRussian = !isRussian"> {{isRussian ? "Rus" : "Eng"}}</div>
+    <div id = "next-lang" v-on:click = "isRussian = !isRussian"> {{isRussian ? "Rus" : "Eng"}}</div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@
 </script>
 
 <style scoped lang="scss">
-    div#nextLang{
+    div#next-lang{
         grid-column: 12 / 13;
         grid-row: 7;
         align-self: center;
@@ -22,13 +22,13 @@
         font-size: $linkSize;
         z-index: 0;
     }
-    div#nextLang:hover {
+    div#next-lang:hover {
         color: cornflowerblue;
         cursor: default;
         user-select: none;
     }
     @media only screen and (max-width: 1033px){
-        div#nextLang{
+        div#next-lang{
             justify-self: center;
             align-self: center;
             font-size: $mobileLinkSize;

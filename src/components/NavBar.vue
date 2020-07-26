@@ -1,23 +1,29 @@
 <template>
     <div id = "NavBar">
 <!--        Class bindings fuck up if the variable type is string instead of boolean-->
-        <img id="burger"
-             v-if="mobile"
-             src="../../public/burgerMenu.png"
+<!--        WHY CANT IT RESOLVE THE FUCKIN FILE. Tried to use v-bind:src and had a heart attack in rage-->
+
+        <img src="../../public/burgerMenu.png"
+             class="burger"
+             v-if="mobile && logoIsBlack"
              v-on:click="burgerPressed"
              alt="Confirm">
-<!--        <transition name="slide">-->
-            <div v-bind:class="{MobileBar: mobile, DesktopBar: !mobile, isToggled: menuIsOpen}">
+<!--        FIX THIS ABSOLUTE GARBAGE OMFG-->
+        <img src="../../public/burgerMenuWhite.png"
+             class="burger"
+             v-if="mobile && !logoIsBlack"
+             v-on:click="burgerPressed"
+             alt="Confirm">
+
+            <div v-bind:class="{'mobile-bar': mobile, 'desktop-bar': !mobile, 'is-toggled': menuIsOpen}">
                 <div class="mobile-options"
+                     v-bind:class="{'unwrap': menuIsOpen}"
                      v-if="mobile">
-<!--                     v-bind:class="{isToggled: menuIsOpen}">-->
-                    <!--v-show="menuIsOpen"-->
-                    <a href="#" class="account" v-bind:class="{unwrap:menuIsOpen}">Аккаунт</a>
-                    <a href="#" class="contacts" v-bind:class="{unwrap:menuIsOpen}">Контакты</a>
-                    <a href="#" class="authors" v-bind:class="{unwrap:menuIsOpen}">Авторы</a>
+                    <a href="#" class="account">Аккаунт</a>
+                    <a href="#" class="contacts">Контакты</a>
+                    <a href="#" class="authors">Авторы</a>
                 </div>
             </div>
-<!--        </transition>-->
     </div>
 </template>
 
@@ -28,12 +34,14 @@
         data: function(){
             return {
                 mobile: false, //MUST be a boolean, since class binding does not work properly with strings
-                menuIsOpen: false
+                menuIsOpen: false,
+                logoIsBlack: true
             }
         },
         methods: {
             burgerPressed: function () {
                 this.menuIsOpen = !(this.menuIsOpen);
+                this.logoIsBlack = !(this.logoIsBlack);
                 console.log(`menuIsOpen set to ${this.menuIsOpen}`);
             }
         },
@@ -49,7 +57,7 @@
         display: contents;
     }
 
-    div.DesktopBar{
+    div.desktop-bar{
         display: inline-flex;
         grid-column: 5 / 9;
         grid-row: 1;
@@ -75,58 +83,49 @@
             }
         }
     }
-    #burger{
+    .burger{
         width: max-content;
         z-index: 10;
         grid-column: 1 / 2;
         grid-row: 1 / 2;
-        justify-self: center;
         align-self: center;
-        margin-left: 25px;
+        margin-left: calc(100vw / 24);
     }
-    //My retard levels are through the roof with all this nesting ngl
-    //The issue is that the text appears BEFORE the menu finishes its transition (MtF)
-    .MobileBar{
+    .mobile-bar {
         grid-column: 1 / 5;
         grid-row: 1 / 7;
         z-index: 5;
         width: 0;
         height: 100vh;
-        background-color: cornflowerblue;
+        background-color: black;
         transition: width 0.25s ease-out 0s;
-        .mobile-options{
-            display: none;
-            //& > a {
-            //    width: 0;
-            //}
-        }
+    }
+    .mobile-bar.is-toggled{
+        width: 100%;
+    }
+    .mobile-options{
+        opacity: 0;
 
-        &.isToggled{
-            width: 100%;
-            & > .mobile-options{
-                display: flex;
-                flex-flow: column;
-                margin-top: calc(100vh / 7);
-                height: available;
-                justify-content: center;
-                & > a{
-                    font-size: $mobileLinkSize;
-                    width: 0;
-                    transition: width 5s ease-out 0s;
-                    margin-bottom: calc(100vh / 7);
-                    &.unwrap{
-                        width: max-content;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-                }
-            }
-            @media only screen and (orientation: landscape) {
-                & > .mobile-options > a{
-                    font-size: $mobileLinkSize - 1vw;
-                }
-            }
+    }
+    .mobile-options.unwrap {
+        transition: opacity 0.25s ease-out 0s;
+        opacity: 1;
+        display: flex;
+        flex-flow: column;
+        margin-top: calc(100vh / 7);
+        height: available;
+        justify-content: center;
+    }
+    a {
+        font-size: $mobileLinkSize;
+        color: #C4C4C4;
+        margin-bottom: calc(100vh / 14);
+        margin-left: calc(100vw / 24);
+        text-decoration: none;
+    }
+    @media only screen and (orientation: landscape) {
+         .mobile-options > a{
+            font-size: $mobileLinkSize - 1vw;
         }
     }
 </style>

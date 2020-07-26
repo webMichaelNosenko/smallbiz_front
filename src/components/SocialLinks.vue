@@ -1,22 +1,22 @@
 <template>
-    <div id = "SocialLinks">
+    <div id = "social-links">
         <a href="https://vk.com/sh_tsquad" class="vk">
             <img
-                srcset="../../public/vkLogo.png 43w, ../../public/vkLogoMobile.png 24w"
+                srcset="../../public/vkLogo.png 43w ../../public/vkLogoMobile.png 24w"
                 sizes="(max-width: 1033px) 24px, 43px"
                 alt="VKontakte"
             >
         </a>
         <a href="#" class="inst">
             <img
-                srcset="../../public/instLogo.png 43w, ../../public/instLogoMobile.png 24w"
+                srcset="../../public/instLogo.png 43w ../../public/instLogoMobile.png 24w"
                 sizes="(max-width: 1033px) 24px, 43px"
                 alt="Instagram"
             >
         </a>
         <a href="#" class="fb">
             <img
-                srcset="../../public/fbLogo.png 43w, ../../public/fbLogoMobile.png 24w"
+                srcset="../../public/fbLogo.png 43w ../../public/fbLogoMobile.png 24w"
                 sizes="(max-width: 1033px) 24px, 43px"
                 alt="Facebook"
             >
@@ -31,7 +31,7 @@
 </script>
 
 <style scoped lang="scss">
-    div#SocialLinks {
+    div#social-links {
         display: flex;
         flex-direction: column;
         grid-column: 1 / 1;
@@ -42,7 +42,7 @@
          margin-bottom: 15px;
      }
     @media only screen and (max-width: 1033px) {
-        div#SocialLinks {
+        div#social-links {
             display: flex;
             flex-direction: row;
             grid-column: 9 / 13;

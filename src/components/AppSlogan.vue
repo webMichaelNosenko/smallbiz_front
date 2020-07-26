@@ -1,5 +1,5 @@
 <template>
-    <div id = "AppSlogan">Лучшее всегда рядом</div>
+    <div id = "app-slogan">Лучшее всегда рядом</div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@
 </script>
 
 <style scoped lang="scss">
-    div#AppSlogan{
+    div#app-slogan{
         grid-column: 2 / 12;
         grid-row: 2 / 5;
         font-size: $sloganSize; //any variable that goes as $...Size is defined in _variables.scss
@@ -18,13 +18,13 @@
         z-index: 0;
     }
     @media only screen and (max-width: 1033px){
-        div#AppSlogan{
+        div#app-slogan{
             font-size: $mobileSloganSize;
             grid-row: 2 / 3;
         }
     }
     @media only screen and (max-width: 1033px) and (orientation: landscape) {
-        div#AppSlogan{
+        div#app-slogan{
             align-self: end;
             font-size: $mobileSloganSize - 1.5vw;
             grid-row: 2 / 4;
