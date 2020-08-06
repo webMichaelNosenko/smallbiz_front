@@ -7,9 +7,8 @@
             <option v-for="city in cities" :key="city.id"> {{city.cityName}} </option>
         </datalist>
         <img id="confirm"
-             srcset="../../public/confirmButton.jpg 84w ../../public/confirmButtonMobile.jpg 50w"
+             src="../../public/confirm.svg"
              v-on:click="confirmPressed"
-             sizes="(max-width: 1033px) 50px, 84px"
              alt="Confirm">
     </div>
 </template>
@@ -36,6 +35,7 @@
         methods: {
             confirmPressed: function () {
                 this.$emit('confirmPressed', 'FieldPicker');
+                this.$store.dispatch('changeCity', this.currCity);
                 console.log(`emitted event 'confirmPressed' from ${this.$options.name} to change picker to FieldPicker`);
                 //might want to implement an Event Bus at this point
             }
@@ -58,7 +58,7 @@
         grid-column: 7 / 10;
         grid-row: 5 / 6;
         height: min-content;
-        background-color: #C4C4C4;
+        background-color: #B51919;
         border-style: none;
         font-size: $pickerSize;
     }
@@ -66,6 +66,8 @@
         grid-column: 6 / 8;
         grid-row: 6 / 7;
         justify-self: center;
+        height: 60px;
+        width: 60px;
     }
     @media only screen and (max-width: 1033px){
         div#outer-container{
@@ -86,7 +88,8 @@
         img#confirm{
             justify-self: center;
             align-self: center;
-            width: min-content;
+            width: 30px;
+            height: 30px;
         }
         div#plain-text, input#city-picker{
             font-size: $mobilePickerSize;

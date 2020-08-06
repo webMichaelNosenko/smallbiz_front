@@ -7,11 +7,11 @@
             <option v-for="field in fields" :key="field.id"> {{field.fieldName}} </option>
         </datalist>
         <img id="confirm"
-             srcset="../../public/confirmButton.jpg 84w ../../public/confirmButtonMobile.jpg 50w"
+             src="../../public/confirm.svg"
              v-on:click="confirmPressed"
-             sizes="(max-width: 1033px) 50px, 84px"
              alt="Confirm">
     </div>
+<!--    sizes="(max-width: 1033px) 50px, 84px"-->
 </template>
 
 <script>
@@ -35,8 +35,10 @@
         },
         methods: {
             confirmPressed: function () {
-                this.$emit('confirmPressed', 'CityPicker');
-                console.log(`emitted event 'confirmPressed' from ${this.$options.name} to change picker to FieldPicker`);
+                this.$emit('confirmPressed', 'GeneralPicker');
+                console.log(`emitted event 'confirmPressed' from ${this.$options.name} to change picker to GeneralPicker`);
+                this.$store.dispatch('changeField', this.currField);
+                this.$store.dispatch('changeShowingResults');
                 //might want to implement an Event Bus at this point
             }
         }
@@ -57,13 +59,15 @@
     input#field-picker{
         grid-column: 7 / 10;
         height: min-content;
-        background-color: #C4C4C4;
+        background-color: #B51919;
         border-style: none;
         font-size: $pickerSize;
     }
     img#confirm{
         grid-column: 6 / 8;
         justify-self: center;
+        height: 60px;
+        width: 60px;
     }
     @media only screen and (max-width: 1033px){
         div#outer-container{
@@ -84,7 +88,8 @@
         img#confirm{
             justify-self: center;
             align-self: center;
-            width: min-content;
+            width: 30px;
+            height: 30px;
         }
         div#plain-text, input#field-picker{
             font-size: $mobilePickerSize;

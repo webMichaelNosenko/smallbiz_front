@@ -2,22 +2,19 @@
     <div id = "social-links">
         <a href="https://vk.com/sh_tsquad" class="vk">
             <img
-                srcset="../../public/vkLogo.png 43w ../../public/vkLogoMobile.png 24w"
-                sizes="(max-width: 1033px) 24px, 43px"
+                src="../../public/vkWhite.svg"
                 alt="VKontakte"
             >
         </a>
         <a href="#" class="inst">
             <img
-                srcset="../../public/instLogo.png 43w ../../public/instLogoMobile.png 24w"
-                sizes="(max-width: 1033px) 24px, 43px"
+                src="../../public/instWhite.svg"
                 alt="Instagram"
             >
         </a>
         <a href="#" class="fb">
             <img
-                srcset="../../public/fbLogo.png 43w ../../public/fbLogoMobile.png 24w"
-                sizes="(max-width: 1033px) 24px, 43px"
+                src="../../public/fbWhite.svg"
                 alt="Facebook"
             >
         </a>
@@ -41,6 +38,11 @@
     a {
          margin-bottom: 15px;
      }
+    .vk > img, .inst > img, .fb > img { //fucking retard, i wrote this as .vk, .inst, .fb > img
+        height: 60px;                   //AND THE > SELECTOR ONLY APPLIED TO FB
+        width: 60px;                    //ah, the pain
+        flex-grow: 1;
+    }
     @media only screen and (max-width: 1033px) {
         div#social-links {
             display: flex;
@@ -55,9 +57,31 @@
             max-width: 100%;
             max-height: 100%;
             margin-bottom: 0;
+            margin-right: calc(100vw / 24);
         }
-        a.vk, a.inst{
-            margin-right: 10px;
+        /*a.vk {*/
+        /*    align-self: end;*/
+        /*}*/
+        /*a.inst {*/
+        /*    align-self: end;*/
+        /*}*/
+        /*a.fb {*/
+        /*    align-self: end;*/
+        /*}*/
+        /*a.vk, a.inst{*/
+        /*    margin-right: 10px;*/
+        /*}*/
+        .fb > img {
+            height: 24px;
+            width: 24px;
+        }
+        .vk > img {
+            height: 24px;
+            width: 24px;
+        }
+        .inst > img {
+            height: 24px;
+            width: 24px;
         }
     }
 

@@ -3,27 +3,19 @@
 <!--        Class bindings fuck up if the variable type is string instead of boolean-->
 <!--        WHY CANT IT RESOLVE THE FUCKIN FILE. Tried to use v-bind:src and had a heart attack in rage-->
 
-        <img src="../../public/burgerMenu.png"
-             class="burger"
-             v-if="mobile && logoIsBlack"
-             v-on:click="burgerPressed"
-             alt="Confirm">
-<!--        FIX THIS ABSOLUTE GARBAGE OMFG-->
         <img src="../../public/burgerMenuWhite.png"
              class="burger"
-             v-if="mobile && !logoIsBlack"
+             v-if="mobile"
              v-on:click="burgerPressed"
              alt="Confirm">
 
-            <div v-bind:class="{'mobile-bar': mobile, 'desktop-bar': !mobile, 'is-toggled': menuIsOpen}">
-                <div class="mobile-options"
-                     v-bind:class="{'unwrap': menuIsOpen}"
-                     v-if="mobile">
-                    <a href="#" class="account">Аккаунт</a>
-                    <a href="#" class="contacts">Контакты</a>
-                    <a href="#" class="authors">Авторы</a>
-                </div>
+        <div v-bind:class="{'mobile-bar': mobile, 'is-toggled': menuIsOpen, 'desktop-bar': !mobile}">
+            <div v-bind:class="{'unwrap': menuIsOpen, 'mobile-options': mobile, 'desktop-options': !mobile}">
+                <a href="#" class="account">Аккаунт</a>
+                <a href="#" class="contacts">Контакты</a>
+                <a href="#" class="authors">Авторы</a>
             </div>
+        </div>
     </div>
 </template>
 
@@ -34,14 +26,12 @@
         data: function(){
             return {
                 mobile: false, //MUST be a boolean, since class binding does not work properly with strings
-                menuIsOpen: false,
-                logoIsBlack: true
+                menuIsOpen: false
             }
         },
         methods: {
             burgerPressed: function () {
                 this.menuIsOpen = !(this.menuIsOpen);
-                this.logoIsBlack = !(this.logoIsBlack);
                 console.log(`menuIsOpen set to ${this.menuIsOpen}`);
             }
         },
@@ -58,38 +48,50 @@
     }
 
     div.desktop-bar{
-        display: inline-flex;
+        display: contents;
+    }
+
+    div.desktop-options{
+        display: flex;
         grid-column: 5 / 9;
         grid-row: 1;
         align-self: center;
         justify-content: center;
+        justify-items: center;
         z-index: 0;
+    }
 
-        a {
-            text-decoration: none;
-            color: black;
-            font-size: $linkSize;
-
-            &.account{
-                margin-right: 9%;
-            }
-            &.contacts{
-                 margin-right: 9%;
-             }
-            &.account:hover, &.contacts:hover, &.authors:hover {
-                color: cornflowerblue;
-                cursor: default;
-                user-select: none;
-            }
+    div.desktop-options > a {
+        text-decoration: none;
+        //color: black;
+        font-size: $linkSize;
+        &.contacts{
+            width: 33%;
+            text-align: center;
+        }
+        &.authors{
+            width: 33%;
+            text-align: center;
+        }
+        &.account{
+            width: 33%;
+            text-align: center;
+        }
+        &.account:hover, &.contacts:hover, &.authors:hover {
+            color: cornflowerblue;
+            cursor: default;
+            user-select: none;
         }
     }
+
+
     .burger{
         width: max-content;
         z-index: 10;
         grid-column: 1 / 2;
         grid-row: 1 / 2;
         align-self: center;
-        margin-left: calc(100vw / 24);
+        margin-left: calc(#{$oneCol} / 2);
     }
     .mobile-bar {
         grid-column: 1 / 5;
@@ -112,15 +114,15 @@
         opacity: 1;
         display: flex;
         flex-flow: column;
-        margin-top: calc(100vh / 7);
+        margin-top: $oneRow;
         height: available;
         justify-content: center;
     }
-    a {
+    .mobile-options.unwrap > a {
         font-size: $mobileLinkSize;
         color: #C4C4C4;
-        margin-bottom: calc(100vh / 14);
-        margin-left: calc(100vw / 24);
+        margin-bottom: calc(#{$oneRow} / 2);
+        margin-left: calc(#{$oneCol} / 2);
         text-decoration: none;
     }
     @media only screen and (orientation: landscape) {

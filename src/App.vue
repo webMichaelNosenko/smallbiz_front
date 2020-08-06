@@ -3,12 +3,13 @@
         <NavBar></NavBar>
         <AppSlogan></AppSlogan>
         <SocialLinks></SocialLinks>
-        <keep-alive>
+<!--        <keep-alive>-->
             <CityPicker v-if="currPicker === 'CityPicker'" v-on:confirmPressed="onConfirmPressed"></CityPicker>
-        </keep-alive>
-        <keep-alive>
+<!--        </keep-alive>-->
+<!--        <keep-alive>-->
             <FieldPicker v-if="currPicker === 'FieldPicker'" v-on:confirmPressed="onConfirmPressed"></FieldPicker>
-        </keep-alive>
+<!--        </keep-alive>-->
+            <GeneralPicker v-if="currPicker === 'GeneralPicker'"></GeneralPicker>
         <AppFooter></AppFooter>
     </div>
 </template>
@@ -20,12 +21,19 @@
     }
     * {
         font-family: 'Merriweather', serif;
+        color: #F1F1F1;
     }
     div#app {
         display: grid;
         grid-template-columns: repeat(12, calc(100% / 12));
         grid-template-rows: repeat(7, calc(100% / 7));
         height: 100vh;
+        background-image: url("~@/../public/bgRedGrad.png"), url("~@/../public/bgRed.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-origin: border-box;
+        background-color: #C4C4C4;
     }
 </style>
 
@@ -36,8 +44,9 @@
     import CityPicker from "@/components/CityPicker";
     import AppFooter from "@/components/AppFooter";
     import FieldPicker from "@/components/FieldPicker";
+    import GeneralPicker from "@/components/GeneralPicker";
     export default {
-        components: {AppSlogan, NavBar, SocialLinks, CityPicker, FieldPicker, AppFooter},
+        components: {AppSlogan, NavBar, SocialLinks, CityPicker, FieldPicker, AppFooter, GeneralPicker},
         data: function () {
             return {
                 currPicker: 'CityPicker'

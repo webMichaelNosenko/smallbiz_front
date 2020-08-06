@@ -1,10 +1,11 @@
 <template>
-    <div id = "app-slogan">Лучшее всегда рядом</div>
+    <div id = "app-slogan"
+         v-bind:class="{'showing-results': this.$store.getters.isShowingResults}">Лучшее всегда рядом</div>
 </template>
 
 <script>
     export default {
-        name: "AppSlogan"
+        name: "AppSlogan",
     }
 </script>
 
@@ -16,6 +17,7 @@
         align-self: center;     //(registered in vue config file), and is global
         text-align: center;
         z-index: 0;
+        transition: font-size 1s, transform 1s;
     }
     @media only screen and (max-width: 1033px){
         div#app-slogan{
@@ -29,5 +31,9 @@
             font-size: $mobileSloganSize - 1.5vw;
             grid-row: 2 / 4;
         }
+    }
+    #app-slogan.showing-results{
+        transform: translateY(calc(#{$oneRow} * -1));
+        font-size: 74px;
     }
 </style>
