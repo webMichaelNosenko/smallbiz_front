@@ -1,5 +1,6 @@
 # smallbiz_front
 
+A sample Vue-based website demo. It is mobile-friendly and responsive. Uses SASS, the CSS preprocessor.
 ## Project setup
 ```
 npm install
